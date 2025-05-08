@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>抖音团长平台</title>
+    <style>
+        body {
+            font-family: 'PingFang SC', 'Microsoft YaHei', sans-serif;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background-color: #f5f5f5;
+        }
+        .container {
+            display: flex;
+            box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+            border-radius: 10px;
+            overflow: hidden;
+            width: 900px;
+            height: 500px;
+        }
+        .left-section {
+            flex: 1;
+            background-color: #ff2c55;
+            color: white;
+            padding: 40px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+        .right-section {
+            flex: 1;
+            background-color: white;
+            padding: 40px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+        h1 {
+            font-size: 28px;
+            margin-bottom: 20px;
+        }
+        .description {
+            font-size: 16px;
+            margin-bottom: 30px;
+            line-height: 1.6;
+        }
+        .form-group {
+            margin-bottom: 20px;
+        }
+        label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: bold;
+            color: #333;
+        }
+        input {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            font-size: 16px;
+        }
+        button {
+            background-color: #ff2c55;
+            color: white;
+            border: none;
+            padding: 12px 20px;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 16px;
+            width: 100%;
+            margin-top: 20px;
+        }
+        button:hover {
+            background-color: #ff1a47;
+        }
+        .links {
+            margin-top: 20px;
+            text-align: center;
+        }
+        a {
+            color: #ff2c55;
+            text-decoration: none;
+        }
+        a:hover {
+            text-decoration: underline;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="left-section">
+            <h1>抖音团长平台</h1>
+            <p class="description">连接商家与达人，打造高效短视频营销生态</p>
+            <div style="margin-top: 40px;">
+                <p>• 海量优质达人资源</p>
+                <p>• 透明的任务管理流程</p>
+                <p>• 实时数据分析与报告</p>
+                <p>• 安全可靠的支付系统</p>
+            </div>
+        </div>
+        <div class="right-section">
+            <h1>账号登录</h1>
+            <form>
+                <div class="form-group">
+                    <label for="username">用户名/手机号</label>
+                    <input type="text" id="username" name="username" placeholder="请输入用户名或手机号">
+                </div>
+                <div class="form-group">
+                    <label for="password">密码</label>
+                    <input type="password" id="password" name="password" placeholder="请输入密码">
+                </div>
+                <button type="button" onclick="alert('登录功能正在开发中')">登录</button>
+                <div class="links">
+                    <a href="#" onclick="alert('注册功能正在开发中')">注册新账号</a> | 
+                    <a href="#" onclick="alert('找回密码功能正在开发中')">忘记密码</a>
+                </div>
+            </form>
+        </div>
+    </div>
+</body>
+</html> 

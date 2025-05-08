@@ -1,0 +1,102 @@
+/* 抖音团长平台样式变量 */
+
+// 主题色
+$primary-color: #ff2c55;
+$primary-light: #ff5d7d;
+$primary-dark: #e81846;
+
+// 辅助色
+$success-color: #52c41a;
+$warning-color: #faad14;
+$danger-color: #f5222d;
+$info-color: #1890ff;
+
+// 中性色
+$text-primary: #333333;
+$text-regular: #666666;
+$text-secondary: #999999;
+$border-color: #e6e6e6;
+$background-color: #f5f5f5;
+
+// 字体设置
+$font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'PingFang SC', 'Hiragino Sans GB',
+  'Microsoft YaHei', 'Helvetica Neue', Helvetica, Arial, sans-serif;
+
+// 字体大小
+$font-size-small: 12px;
+$font-size-base: 14px;
+$font-size-medium: 16px;
+$font-size-large: 18px;
+$font-size-xl: 22px;
+$font-size-xxl: 28px;
+
+// 边框圆角
+$border-radius-small: 2px;
+$border-radius-base: 4px;
+$border-radius-large: 8px;
+$border-radius-circle: 50%;
+
+// 间距
+$spacing-mini: 4px;
+$spacing-small: 8px;
+$spacing-base: 12px;
+$spacing-medium: 16px;
+$spacing-large: 24px;
+$spacing-xl: 32px;
+$spacing-xxl: 48px;
+
+// 阴影
+$box-shadow-base: 0 2px 8px rgba(0, 0, 0, 0.08);
+$box-shadow-light: 0 1px 4px rgba(0, 0, 0, 0.05);
+$box-shadow-heavy: 0 4px 16px rgba(0, 0, 0, 0.12);
+
+// 过渡
+$transition-base: all 0.3s cubic-bezier(0.645, 0.045, 0.355, 1);
+$transition-fast: all 0.2s cubic-bezier(0.645, 0.045, 0.355, 1);
+
+// z-index
+$z-index-dropdown: 100;
+$z-index-fixed: 500;
+$z-index-modal: 1000;
+$z-index-popover: 1050;
+$z-index-tooltip: 1100;
+
+// 布局
+$header-height: 60px;
+$sidebar-width: 240px;
+$sidebar-collapsed-width: 64px;
+
+// 颜色变量
+$secondary-color: #2c84ff;
+$secondary-light: lighten($secondary-color, 30%);
+$secondary-dark: darken($secondary-color, 10%);
+
+$text-light: #666;
+$text-lighter: #999;
+
+$bg-color: #fff;
+$bg-light: #f8f8f8;
+$bg-dark: #e0e0e0;
+
+$border-light: #f0f0f0;
+
+// 尺寸变量
+$container-width: 1200px;
+$border-radius: 4px;
+$box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+
+// 字体变量
+$font-size-xlarge: 16px;
+$font-size-xxlarge: 20px;
+
+// 间距变量
+$spacing-xs: 4px;
+$spacing-sm: 8px;
+$spacing-md: 16px;
+$spacing-lg: 24px;
+
+// 断点变量
+$breakpoint-xs: 576px;
+$breakpoint-sm: 768px;
+$breakpoint-md: 992px;
+$breakpoint-lg: 1200px; 
