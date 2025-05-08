@@ -8,6 +8,7 @@ use App\Http\Controllers\TaskController;
 use App\Http\Controllers\MaterialController;
 use App\Http\Controllers\SettlementController;
 use App\Http\Controllers\StatisticsController;
+use App\Http\Controllers\MembershipController;
 
 /*
 |--------------------------------------------------------------------------
@@ -79,4 +80,11 @@ Route::middleware('auth:sanctum')->group(function () {
     // 数据统计
     Route::get('statistics/income', [StatisticsController::class, 'income']);
     Route::get('statistics/promotion', [StatisticsController::class, 'promotion']);
+    
+    // 会员等级相关
+    Route::get('membership/levels', [MembershipController::class, 'getAllLevels']);
+    Route::get('membership/user', [MembershipController::class, 'getUserMembership']);
+    Route::post('membership/upgrade', [MembershipController::class, 'upgradeMembership']);
+    Route::post('membership/points/add', [MembershipController::class, 'addPoints']);
+    Route::get('membership/benefit/check', [MembershipController::class, 'checkBenefit']);
 }); 

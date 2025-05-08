@@ -1,8 +1,86 @@
 # 抖音团长平台
 
-## 项目概述
+抖音团长平台是一个连接商家与达人的短视频营销服务平台，旨在提供高效、透明的任务对接和合作流程。
 
-抖音团长平台是一个连接商家与达人的短视频营销平台，帮助商家发布任务，达人接单完成推广，实现高效的短视频营销生态。
+## 项目架构
+
+本项目采用前后端分离架构：
+- 前端：Vue.js 3 + Element Plus + Axios
+- 后端：PHP (Laravel) + MySQL/SQLite
+
+## 主要功能模块
+
+### 1. 用户管理
+- 用户注册、登录、认证
+- 商家、达人、管理员三种角色权限
+
+### 2. 任务管理
+- 商家发布任务
+- 达人浏览和申请任务
+- 任务状态全流程跟踪
+
+### 3. 会员等级体系
+- 多级会员体系（普通会员、银牌会员、金牌会员、钻石会员）
+- 不同等级拥有不同权益（任务接单数量、佣金比例、提现速度）
+- 基于任务完成质量和数量的自动升级机制
+
+### 4. 素材管理
+- 商家上传产品素材
+- 达人提交成片作品
+
+### 5. 结算管理
+- 任务完成确认
+- 佣金结算和提现
+
+## 本地开发环境
+
+### 前端开发
+```bash
+# 进入前端项目目录
+cd frontend
+
+# 安装依赖
+npm install
+
+# 启动开发服务器
+npm run serve
+```
+
+### 后端开发
+```bash
+# 进入后端项目目录
+cd backend
+
+# 安装依赖
+composer install
+
+# 配置环境变量
+cp .env.example .env
+# 编辑.env文件配置数据库
+
+# 运行数据库迁移
+php artisan migrate
+
+# 启动服务
+php artisan serve
+```
+
+## 账号信息
+
+- 管理员账号：admin / admin123
+- 商家账号：merchant / merchant123
+
+## 贡献指南
+
+1. Fork本仓库
+2. 创建您的特性分支 `git checkout -b feature/amazing-feature`
+3. 提交您的更改 `git commit -m 'Add some amazing feature'`
+4. 推送到分支 `git push origin feature/amazing-feature`
+5. 创建Pull Request
+
+## 授权许可
+
+本项目采用MIT许可证 - 详细信息请查看LICENSE文件
 
 ## 技术架构
 

@@ -20,6 +20,19 @@ const AdminTaskList = () => import('../views/admin/tasks/TaskList.vue')
 const MaterialList = () => import('../views/admin/materials/MaterialList.vue')
 const SystemSettings = () => import('../views/admin/settings/SystemSettings.vue')
 
+// 用户相关路由
+const userRoutes = [
+  {
+    path: '/user/member',
+    name: 'MemberCenter',
+    component: () => import('@/views/user/MemberCenter.vue'),
+    meta: { 
+      title: '会员中心',
+      requireAuth: true
+    }
+  },
+]
+
 const routes = [
   {
     path: '/',
