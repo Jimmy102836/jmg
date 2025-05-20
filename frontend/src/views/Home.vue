@@ -652,8 +652,8 @@ export default {
         
         &:last-child {
           border-bottom: none;
-        }
-        
+  }
+  
         .rank-number {
           width: 20px;
           height: 20px;
@@ -730,9 +730,9 @@ export default {
               }
               
               .value {
-                color: #ff2c55;
+        color: #ff2c55;
                 font-weight: bold;
-              }
+      }
             }
           }
           
@@ -1503,7 +1503,7 @@ export default {
 
 @media (max-width: 768px) {
   .main-area {
-  }
+    }
     
   .auth-steps {
     flex-direction: column;

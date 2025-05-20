@@ -13,14 +13,14 @@
           <el-col :span="24">
             <div class="filter-tabs">
               <div class="filter-tab" v-for="category in categories" :key="category.id" :class="{ active: filters.category === category.id }" @click="filters.category = category.id">
-                {{ category.name }}
+                  {{ category.name }}
               </div>
             </div>
           </el-col>
         </el-row>
-        
+          
         <div class="sub-filters">
-          <div class="filter-group">
+            <div class="filter-group">
             <div class="filter-label">佣金比例:</div>
             <div class="filter-options">
               <div class="filter-option" :class="{ active: filters.commission === '' }" @click="filters.commission = ''">全部</div>
@@ -30,7 +30,7 @@
             </div>
           </div>
           
-          <div class="filter-group">
+            <div class="filter-group">
             <div class="filter-label">价格区间:</div>
             <div class="filter-options">
               <div class="filter-option" :class="{ active: filters.price === '' }" @click="filters.price = ''">全部</div>
@@ -40,18 +40,18 @@
               <div class="filter-option" :class="{ active: filters.price === '200+' }" @click="filters.price = '200+'">200元以上</div>
             </div>
           </div>
-        </div>
+            </div>
         
         <div class="filter-tags">
           <span class="tag-title">商品标签：</span>
           <div class="tag-options">
             <div 
-              v-for="tag in productTags" 
-              :key="tag.id"
+            v-for="tag in productTags" 
+            :key="tag.id"
               :class="['tag-option', { active: selectedTags.includes(tag.id) }]"
               @click="toggleTag(tag.id)"
-            >
-              {{ tag.name }}
+          >
+            {{ tag.name }}
             </div>
           </div>
         </div>
@@ -60,9 +60,9 @@
           <div class="search-box">
             <i class="el-icon-search"></i>
             <input 
-              v-model="searchKeyword" 
-              placeholder="搜索商品名称/描述"
-              @keyup.enter="searchProducts" 
+            v-model="searchKeyword" 
+            placeholder="搜索商品名称/描述" 
+            @keyup.enter="searchProducts"
             />
             <button class="search-btn" @click="searchProducts">搜索</button>
           </div>
@@ -344,37 +344,37 @@ export default {
   background-color: #f5f5f5;
   padding-bottom: 40px;
 }
-
-.container {
-  max-width: 1200px;
-  margin: 0 auto;
+  
+  .container {
+    max-width: 1200px;
+    margin: 0 auto;
   padding: 0 15px;
-}
-
-.page-header {
+  }
+  
+  .page-header {
   padding: 20px 0;
-  text-align: center;
+    text-align: center;
   background-color: #fff;
   border-bottom: 1px solid #eee;
   margin-bottom: 15px;
-  
-  h1 {
+    
+    h1 {
     font-size: 24px;
     font-weight: 600;
-    color: #333;
+      color: #333;
     margin-bottom: 5px;
+    }
+    
+    p {
+    font-size: 14px;
+      color: #666;
+    }
   }
   
-  p {
-    font-size: 14px;
-    color: #666;
-  }
-}
-
-.filter-section {
-  background-color: #fff;
+  .filter-section {
+    background-color: #fff;
   padding: 15px;
-  border-radius: 8px;
+    border-radius: 8px;
   margin-bottom: 15px;
   box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
   
@@ -448,19 +448,19 @@ export default {
           }
         }
       }
+      }
     }
-  }
-  
-  .filter-tags {
-    display: flex;
-    margin-bottom: 15px;
     
-    .tag-title {
-      font-size: 14px;
-      color: #333;
-      margin-right: 10px;
+    .filter-tags {
+      display: flex;
+    margin-bottom: 15px;
+      
+      .tag-title {
+        font-size: 14px;
+        color: #333;
+        margin-right: 10px;
       line-height: 32px;
-    }
+      }
     
     .tag-options {
       display: flex;
@@ -485,11 +485,11 @@ export default {
           background-color: #ffe8ec;
           color: #ff2c55;
         }
+        }
       }
     }
-  }
-  
-  .filter-search {
+    
+    .filter-search {
     .search-box {
       display: flex;
       max-width: 600px;
@@ -531,106 +531,106 @@ export default {
         }
       }
     }
+    }
   }
-}
-
-.products-grid {
+  
+  .products-grid {
   .el-row {
     margin-left: -10px !important;
     margin-right: -10px !important;
   }
-  
-  .el-col {
+    
+    .el-col {
     padding-left: 10px !important;
     padding-right: 10px !important;
-  }
-  
-  .product-card {
+    }
+    
+    .product-card {
     background-color: #fff;
     border-radius: 8px;
     overflow: hidden;
     cursor: pointer;
-    transition: all 0.3s;
+      transition: all 0.3s;
     margin-bottom: 20px;
     border: 1px solid #f0f0f0;
-    
-    &:hover {
+      
+      &:hover {
       transform: translateY(-3px);
       box-shadow: 0 5px 15px rgba(0, 0, 0, 0.08);
-    }
-    
-    .product-image {
-      position: relative;
-      padding-bottom: 100%;
-      overflow: hidden;
+      }
       
-      img {
-        position: absolute;
-        width: 100%;
-        height: 100%;
-        object-fit: cover;
+      .product-image {
+        position: relative;
+        padding-bottom: 100%;
+        overflow: hidden;
+        
+        img {
+          position: absolute;
+          width: 100%;
+          height: 100%;
+          object-fit: cover;
         transition: transform 0.3s;
       }
       
       &:hover img {
         transform: scale(1.05);
-      }
-      
+        }
+        
       .discount-tag {
-        position: absolute;
-        top: 10px;
+          position: absolute;
+          top: 10px;
         right: 10px;
-        background-color: #ff2c55;
-        color: #fff;
+            background-color: #ff2c55;
+            color: #fff;
         padding: 2px 5px;
-        font-size: 12px;
+            font-size: 12px;
         font-weight: bold;
         border-radius: 4px;
+        }
       }
-    }
-    
-    .product-info {
-      padding: 10px;
       
-      .product-title {
-        font-size: 14px;
-        color: #333;
+      .product-info {
+      padding: 10px;
+        
+        .product-title {
+          font-size: 14px;
+          color: #333;
         margin: 0 0 8px;
         line-height: 1.3;
         height: 36px;
-        overflow: hidden;
-        text-overflow: ellipsis;
-        display: -webkit-box;
-        -webkit-line-clamp: 2;
-        -webkit-box-orient: vertical;
-      }
-      
-      .price-info {
-        margin-bottom: 8px;
+          overflow: hidden;
+          text-overflow: ellipsis;
+          display: -webkit-box;
+          -webkit-line-clamp: 2;
+          -webkit-box-orient: vertical;
+        }
+        
+        .price-info {
+          margin-bottom: 8px;
         
         .price-symbol {
           font-size: 14px;
           color: #ff2c55;
           font-weight: bold;
         }
-        
-        .current-price {
+          
+          .current-price {
           font-size: 20px;
           color: #ff2c55;
-          font-weight: bold;
+            font-weight: bold;
           margin-right: 5px;
+          }
+          
+          .original-price {
+          font-size: 12px;
+            color: #999;
+            text-decoration: line-through;
+          }
         }
         
-        .original-price {
-          font-size: 12px;
-          color: #999;
-          text-decoration: line-through;
-        }
-      }
-      
       .product-meta {
-        display: flex;
-        justify-content: space-between;
+          display: flex;
+          justify-content: space-between;
         
         .sales-count {
           font-size: 12px;
@@ -643,15 +643,15 @@ export default {
           background-color: #fff2ee;
           padding: 2px 4px;
           border-radius: 2px;
+          }
         }
       }
     }
   }
-}
-
-.pagination-container {
-  display: flex;
-  justify-content: center;
+  
+  .pagination-container {
+    display: flex;
+    justify-content: center;
   margin-top: 30px;
   
   :deep(.el-pagination) {

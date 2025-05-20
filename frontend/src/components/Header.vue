@@ -3,12 +3,12 @@
     <!-- 顶部导航 -->
     <div class="top-header">
       <div class="container">
-        <div class="logo-container">
-          <router-link to="/" class="logo">
+      <div class="logo-container">
+        <router-link to="/" class="logo">
             <img src="../assets/images/logo/logo.jpg" alt="吉米哥达人任务平台" />
-            <span class="site-name">吉米哥达人任务平台</span>
-          </router-link>
-        </div>
+          <span class="site-name">吉米哥达人任务平台</span>
+        </router-link>
+      </div>
         
         <div class="nav-tabs">
           <div class="tab-item active">
@@ -47,10 +47,10 @@
               </button>
             </div>
           </div>
-        </div>
+      </div>
         
-        <div class="user-container">
-          <template v-if="isAuthenticated">
+      <div class="user-container">
+        <template v-if="isAuthenticated">
             <div class="user-tools">
               <div class="tool-item">
                 <router-link to="/user/analysis">
@@ -65,28 +65,28 @@
                 </router-link>
               </div>
             </div>
-            <el-dropdown>
-              <div class="user-profile">
-                <img :src="userAvatar" alt="用户头像" class="user-avatar" />
-              </div>
-              <template #dropdown>
-                <el-dropdown-menu>
-                  <el-dropdown-item>
-                    <router-link to="/user/profile">个人中心</router-link>
-                  </el-dropdown-item>
-                  <el-dropdown-item v-if="isAdmin || isMerchant">
-                    <router-link to="/merchant">商家控制台</router-link>
-                  </el-dropdown-item>
-                  <el-dropdown-item divided @click="handleLogout">退出登录</el-dropdown-item>
-                </el-dropdown-menu>
-              </template>
-            </el-dropdown>
-          </template>
-          <template v-else>
+          <el-dropdown>
+            <div class="user-profile">
+              <img :src="userAvatar" alt="用户头像" class="user-avatar" />
+            </div>
+            <template #dropdown>
+              <el-dropdown-menu>
+                <el-dropdown-item>
+                  <router-link to="/user/profile">个人中心</router-link>
+                </el-dropdown-item>
+                <el-dropdown-item v-if="isAdmin || isMerchant">
+                  <router-link to="/merchant">商家控制台</router-link>
+                </el-dropdown-item>
+                <el-dropdown-item divided @click="handleLogout">退出登录</el-dropdown-item>
+              </el-dropdown-menu>
+            </template>
+          </el-dropdown>
+        </template>
+        <template v-else>
             <div class="login-btn-wrap">
               <router-link to="/login" class="login-btn">登录/注册</router-link>
             </div>
-          </template>
+        </template>
         </div>
       </div>
     </div>
@@ -216,10 +216,10 @@ export default {
     align-items: center;
     position: relative;
     cursor: pointer;
-    
-    a {
-      color: #333;
-      text-decoration: none;
+      
+      a {
+        color: #333;
+        text-decoration: none;
       font-size: 13px;
       
       &:hover {
@@ -234,21 +234,21 @@ export default {
     
     &.active {
       font-weight: bold;
-      
-      &::after {
-        content: '';
-        position: absolute;
-        bottom: 0;
+        
+        &::after {
+          content: '';
+          position: absolute;
+          bottom: 0;
         left: 50%;
         transform: translateX(-50%);
         width: 20px;
-        height: 2px;
-        background-color: #ff2c55;
+          height: 2px;
+          background-color: #ff2c55;
         border-radius: 1px;
-      }
-      
+        }
+        
       a {
-        color: #ff2c55;
+          color: #ff2c55;
       }
     }
   }
@@ -269,7 +269,7 @@ export default {
       a {
         display: flex;
         flex-direction: column;
-        align-items: center;
+    align-items: center;
         text-decoration: none;
         color: #666;
         font-size: 12px;
@@ -297,15 +297,15 @@ export default {
   }
   
   .login-btn-wrap {
-    .login-btn {
+  .login-btn {
       border: 1px solid #ff2c55;
       border-radius: 14px;
       padding: 2px 10px;
-      color: #ff2c55;
+    color: #ff2c55;
       font-size: 12px;
       text-decoration: none;
-      
-      &:hover {
+    
+    &:hover {
         background-color: #ff2c55;
         color: #fff;
       }
@@ -340,13 +340,13 @@ export default {
       &::placeholder {
         color: #999;
         font-size: 12px;
-      }
     }
-    
+  }
+  
     .search-btn {
       width: 36px;
       height: 100%;
-      background-color: #ff2c55;
+    background-color: #ff2c55;
       border: none;
       color: white;
       cursor: pointer;
@@ -361,8 +361,8 @@ export default {
         color: white;
         filter: drop-shadow(0 0 2px rgba(255, 255, 255, 0.5));
       }
-      
-      &:hover {
+    
+    &:hover {
         background-color: darken(#ff2c55, 5%);
       }
     }
