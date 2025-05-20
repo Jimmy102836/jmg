@@ -1,0 +1,10 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 128 128" width="128" height="128">
+  <!-- 背景圆形 -->
+  <circle cx="64" cy="64" r="64" fill="#F0F0F0" />
+  
+  <!-- 头部 -->
+  <circle cx="64" cy="54" r="24" fill="#CCCCCC" />
+  
+  <!-- 身体 -->
+  <path d="M64,84 C81.673,84 96,98.327 96,116 L96,128 L32,128 L32,116 C32,98.327 46.327,84 64,84 Z" fill="#CCCCCC" />
+</svg> 

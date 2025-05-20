@@ -12,6 +12,10 @@ html, body {
   font-family: "PingFang SC", "Microsoft YaHei", Arial, sans-serif;
 }
 
+body {
+  padding-top: 0; /* 移除顶部内边距，由各组件自行控制与导航栏的距离 */
+}
+
 #app, .app-container {
   height: 100%;
 }

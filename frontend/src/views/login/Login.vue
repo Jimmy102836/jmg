@@ -4,7 +4,7 @@
       <div class="login-left">
         <div class="platform-info">
           <img src="@/assets/logo.png" alt="平台logo" class="logo">
-          <h1 class="title">抖音团长平台</h1>
+          <h1 class="title">吉米哥达人任务平台</h1>
           <p class="slogan">连接商家与达人，打造高效短视频营销生态</p>
           <div class="features">
             <div class="feature-item">

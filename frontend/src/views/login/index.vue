@@ -2,8 +2,8 @@
   <div class="login-container">
     <div class="login-box">
       <div class="login-logo">
-        <img src="@/assets/images/logo.png" alt="抖音团长" />
-        <h2>抖音团长平台</h2>
+        <img src="@/assets/images/logo.png" alt="吉米哥达人任务平台" />
+        <h2>吉米哥达人任务平台</h2>
       </div>
       <el-form
         ref="loginForm"

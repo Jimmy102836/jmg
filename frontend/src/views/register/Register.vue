@@ -3,7 +3,7 @@
     <div class="register-box">
       <div class="register-header">
         <img src="@/assets/logo.png" alt="平台logo" class="logo">
-        <h1 class="title">注册抖音团长平台账号</h1>
+        <h1 class="title">注册吉米哥达人任务平台账号</h1>
       </div>
 
       <el-steps :active="active" finish-status="success" simple class="register-steps">
@@ -125,7 +125,7 @@
           <el-result 
             icon="success" 
             title="注册成功" 
-            subTitle="恭喜您已成功注册抖音团长平台账号"
+            subTitle="恭喜您已成功注册吉米哥达人任务平台账号"
           >
             <template #extra>
               <el-button type="primary" @click="toLogin">前往登录</el-button>

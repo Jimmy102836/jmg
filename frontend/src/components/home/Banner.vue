@@ -1,6 +1,6 @@
 <template>
   <div class="banner">
-    <el-carousel height="500px" indicator-position="outside" :interval="5000">
+    <el-carousel height="400px" indicator-position="outside" :interval="5000">
       <el-carousel-item v-for="(item, index) in bannerItems" :key="index">
         <div class="banner-item" :style="{ backgroundImage: `url(${item.image})` }">
           <div class="banner-content">
@@ -84,14 +84,14 @@ export default {
 }
 
 .banner-title {
-  font-size: 2.5rem;
+  font-size: 2.2rem;
   font-weight: 700;
-  margin-bottom: 20px;
+  margin-bottom: 15px;
 }
 
 .banner-desc {
-  font-size: 1.2rem;
-  margin-bottom: 30px;
+  font-size: 1.1rem;
+  margin-bottom: 20px;
   line-height: 1.5;
 }
 

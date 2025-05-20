@@ -2,8 +2,8 @@
   <div class="register-container">
     <div class="register-box">
       <div class="register-logo">
-        <img src="@/assets/images/logo.png" alt="抖音团长" />
-        <h2>抖音团长平台</h2>
+        <img src="@/assets/images/logo.png" alt="吉米哥达人任务平台" />
+        <h2>吉米哥达人任务平台</h2>
       </div>
       <el-steps :active="active" finish-status="success" simple>
         <el-step title="账号信息" />

@@ -3,6 +3,7 @@ import auth from './modules/auth'
 import task from './modules/task'
 import material from './modules/material'
 import stats from './modules/stats'
+import leaderboard from './modules/leaderboard'
 
 export default createStore({
   state: {
@@ -29,6 +30,7 @@ export default createStore({
     auth,
     task,
     material,
-    stats
+    stats,
+    leaderboard
   }
 }) 

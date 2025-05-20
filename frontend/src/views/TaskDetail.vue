@@ -28,7 +28,7 @@
             <div class="task-info">
               <div class="info-item">
                 <span class="info-label">任务类型</span>
-                <span class="info-value">{{ getTaskTypeName(task.taskType) }}</span>
+                <span class="info-value">{{ getTaskTypeName(task.task_type) }}</span>
               </div>
               <div class="info-item">
                 <span class="info-label">任务分类</span>
@@ -36,19 +36,19 @@
               </div>
               <div class="info-item">
                 <span class="info-label">发布时间</span>
-                <span class="info-value">{{ formatDate(task.publishTime) }}</span>
+                <span class="info-value">{{ formatDate(task.created_at) }}</span>
               </div>
               <div class="info-item">
                 <span class="info-label">截止时间</span>
-                <span class="info-value">{{ formatDate(task.deadline) }}</span>
+                <span class="info-value">{{ formatDate(task.expire_at) }}</span>
               </div>
               <div class="info-item">
                 <span class="info-label">任务单价</span>
-                <span class="info-value price">{{ task.unitPrice }}元/单</span>
+                <span class="info-value price">{{ task.price }}元/单</span>
               </div>
               <div class="info-item">
                 <span class="info-label">任务数量</span>
-                <span class="info-value">共{{ task.totalCount }}个，已申请{{ task.applyCount }}个</span>
+                <span class="info-value">共{{ task.max_apply }}个，已申请{{ task.apply_count }}个</span>
               </div>
             </div>
 
@@ -103,8 +103,8 @@
               </div>
             </template>
             <div class="merchant-info">
-              <img :src="task.merchantAvatar" class="merchant-avatar" alt="商家头像">
-              <h3 class="merchant-name">{{ task.merchantName }}</h3>
+              <img :src="task.merchant_avatar" class="merchant-avatar" alt="商家头像">
+              <h3 class="merchant-name">{{ task.merchant_name }}</h3>
               <div class="merchant-meta">
                 <div class="meta-item">
                   <i class="el-icon-date"></i>
@@ -117,7 +117,7 @@
               </div>
               <div class="merchant-rating">
                 <span class="rating-label">商家评分</span>
-                <el-rate v-model="task.merchantRating" disabled show-score text-color="#ff9900"></el-rate>
+                <el-rate v-model="task.merchant_rating" disabled show-score text-color="#ff9900"></el-rate>
               </div>
             </div>
           </el-card>
@@ -151,6 +151,7 @@
 
 <script>
 import { formatDate } from '@/utils/date'
+import axios from 'axios'
 
 export default {
   name: 'TaskDetail',
@@ -158,92 +159,104 @@ export default {
     return {
       taskId: null,
       task: {
-        id: 1,
-        title: '抖音短视频带货佛系推广',
-        status: 'active',
-        category: 'clothing',
-        taskType: 1,
-        unitPrice: 300,
-        totalCount: 50,
-        applyCount: 30,
-        publishTime: new Date(Date.now() - 3600000 * 48), // 2天前
-        deadline: new Date(Date.now() + 3600000 * 24 * 7), // 7天后
-        description: `<p>这是一个非常适合达人进行佛系带货的任务，不需要刻意营销，只需要自然地将产品融入到你的日常视频当中。</p>
-        <p>我们是优衣库官方旗舰店，本次推广的是2023春季新款系列，风格简约时尚，非常适合日常穿搭。</p>
-        <p>希望能够找到气质与我们产品风格相符的达人合作，共同打造优质内容。</p>`,
-        requirements: [
-          '粉丝数1万以上，内容风格日常、穿搭类为主',
-          '视频时长不少于60秒，产品展示时间不少于15秒',
-          '视频发布后保留7天以上，不得提前删除',
-          '视频上传后需提供数据截图，包括播放量、点赞、评论等',
-          '禁止使用低俗、暴力等违规内容'
-        ],
-        materials: [
-          { name: '产品图片1.jpg', url: 'https://via.placeholder.com/300x300' },
-          { name: '产品图片2.jpg', url: 'https://via.placeholder.com/300x300' },
-          { name: '产品介绍.docx', url: '#' }
-        ],
-        merchantName: '优衣库官方旗舰店',
-        merchantAvatar: require('@/assets/default-avatar.png'),
+        id: 0,
+        title: '',
+        status: 1,
+        category: '',
+        task_type: '',
+        price: 0,
+        max_apply: 0,
+        apply_count: 0,
+        created_at: '',
+        expire_at: '',
+        description: '',
+        requirements: [],
+        materials: [],
+        merchant_name: '',
+        merchant_avatar: '',
+        merchant_rating: 4.5,
+        // 下面是前端显示用的额外数据
         merchantJoinTime: '2021年5月',
-        merchantTaskCount: 128,
-        merchantRating: 4.8
+        merchantTaskCount: 30,
       },
       hasApplied: false,
       canApply: true,
-      categoryOptions: [
-        { value: 'beauty', label: '美妆个护' },
-        { value: 'clothing', label: '服装' },
-        { value: 'food', label: '食品' },
-        { value: 'digital', label: '数码' },
-        { value: 'home', label: '家居' },
-        { value: 'other', label: '其他' }
-      ],
-      taskTypeOptions: [
-        { value: 1, label: '短视频' },
-        { value: 2, label: '直播' },
-        { value: 3, label: '图文' }
-      ]
+      isLoading: true
     }
   },
   created() {
     this.taskId = this.$route.params.id
-    // 实际项目中这里会根据taskId请求任务详情
-    // this.fetchTaskDetail(this.taskId)
+    this.fetchTaskDetail()
   },
   methods: {
+    fetchTaskDetail() {
+      this.isLoading = true
+      axios.get(`/api/tasks/${this.taskId}`)
+        .then(response => {
+          if (response.data.code === 200) {
+            this.task = {
+              ...response.data.data,
+              // 补充一些前端展示用的数据
+              merchantJoinTime: '2021年5月',
+              merchantTaskCount: 30,
+            }
+          }
+        })
+        .catch(error => {
+          console.error('获取任务详情失败', error)
+          this.$message.error('获取任务详情失败')
+        })
+        .finally(() => {
+          this.isLoading = false
+        })
+    },
     goBack() {
       this.$router.go(-1)
     },
     
-    fetchTaskDetail(id) {
-      // 实际项目中这里会调用API获取任务详情
-      console.log('获取任务详情，ID:', id)
-    },
-    
     getStatusText(status) {
       const statusMap = {
-        draft: '草稿',
-        pending: '待审核',
-        active: '进行中',
-        completed: '已完成',
-        cancelled: '已取消'
+        0: '待审核',
+        1: '进行中',
+        2: '已结束',
+        3: '已取消',
+        'active': '进行中',
+        'pending': '待审核',
+        'completed': '已结束',
+        'canceled': '已取消'
       }
-      return statusMap[status] || '未知状态'
+      return statusMap[status] || '未知'
     },
     
-    getCategoryName(categoryValue) {
-      const category = this.categoryOptions.find(item => item.value === categoryValue)
-      return category ? category.label : '未知分类'
+    getCategoryName(category) {
+      const categoryMap = {
+        'beauty': '美妆个护',
+        'clothing': '服装',
+        'food': '食品',
+        'digital': '数码',
+        'home': '家居',
+        'other': '其他',
+        '短视频带货': '短视频带货',
+        '直播带货': '直播带货'
+      }
+      return categoryMap[category] || category
     },
     
-    getTaskTypeName(typeValue) {
-      const type = this.taskTypeOptions.find(item => item.value === typeValue)
-      return type ? type.label : '未知类型'
+    getTaskTypeName(type) {
+      const typeMap = {
+        '短视频': '短视频',
+        '直播': '直播',
+        '图文': '图文',
+        1: '短视频',
+        2: '直播',
+        3: '图文'
+      }
+      return typeMap[type] || '未知'
     },
     
     formatDate(date) {
-      return formatDate(date, 'YYYY-MM-DD HH:mm')
+      if (!date) return ''
+      return formatDate(new Date(date), 'yyyy-MM-dd HH:mm')
     },
     
     getApplyButtonText() {

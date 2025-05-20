@@ -3,8 +3,8 @@
     <div class="sidebar">
       <div class="logo">
         <router-link to="/">
-          <img src="@/assets/logo.png" alt="抖音团长平台" />
-          <span>抖音团长平台</span>
+          <img src="@/assets/logo.png" alt="吉米哥达人任务平台" />
+          <span>吉米哥达人任务平台</span>
         </router-link>
       </div>
       
@@ -13,7 +13,7 @@
         class="sidebar-menu"
         background-color="#001529"
         text-color="#fff"
-        active-text-color="#ff2c55"
+        active-text-color="#3498db"
         router
       >
         <el-menu-item index="/merchant">
@@ -165,7 +165,9 @@ export default {
       
       img {
         height: 32px;
+        width: auto;
         margin-right: 10px;
+        border-radius: 4px;
       }
       
       span {

@@ -5,7 +5,7 @@
       <el-aside :width="isCollapse ? '64px' : '220px'" class="sidebar">
         <div class="logo">
           <img src="@/assets/logo.png" alt="Logo" />
-          <span v-show="!isCollapse">抖音团长平台</span>
+          <span v-show="!isCollapse">吉米哥达人任务平台</span>
         </div>
         <el-menu
           :default-active="activeMenu"
@@ -13,7 +13,7 @@
           :collapse="isCollapse"
           background-color="#001529"
           text-color="#fff"
-          active-text-color="#ff2c55"
+          active-text-color="#3498db"
           router
         >
           <el-menu-item index="/admin">
@@ -233,6 +233,7 @@ export default {
         width: 32px;
         height: 32px;
         margin-right: 12px;
+        border-radius: 4px;
       }
       
       span {

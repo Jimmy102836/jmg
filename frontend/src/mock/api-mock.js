@@ -5,8 +5,10 @@
 
 import axios from 'axios';
 import MockAdapter from 'axios-mock-adapter';
-import { materials } from './materials';
-import { merchants } from './merchants';
+import { mockMaterials as materials } from './materials';
+import { mockMerchants as merchants } from './merchants';
+import { userLeaderboard, merchantLeaderboard } from './leaderboards';
+import { products } from './products';
 
 // 定义模拟用户数据
 const adminUser = {
@@ -124,6 +126,34 @@ mock.onGet('/api/materials').reply(200, {
   }
 });
 
+// 获取用户排行榜
+mock.onGet(/\/api\/leaderboards\/users/).reply((config) => {
+  const limit = parseInt(config.url.split('limit=')[1]) || 5;
+  
+  return [200, {
+    code: 200,
+    message: '获取成功',
+    data: {
+      data: userLeaderboard.slice(0, limit),
+      total: userLeaderboard.length
+    }
+  }];
+});
+
+// 获取商户排行榜
+mock.onGet(/\/api\/leaderboards\/merchants/).reply((config) => {
+  const limit = parseInt(config.url.split('limit=')[1]) || 5;
+  
+  return [200, {
+    code: 200,
+    message: '获取成功',
+    data: {
+      data: merchantLeaderboard.slice(0, limit),
+      total: merchantLeaderboard.length
+    }
+  }];
+});
+
 // 获取商家列表
 mock.onGet('/api/merchants').reply(200, {
   code: 200,
@@ -172,6 +202,99 @@ mock.onGet('/api/tasks').reply(200, {
     total: 2,
     page: 1,
     per_page: 10
+  }
+});
+
+// 获取任务详情
+mock.onGet(/\/api\/tasks\/\d+/).reply((config) => {
+  const id = parseInt(config.url.split('/').pop());
+  
+  // 模拟任务详情数据
+  const taskDetail = {
+    id: id,
+    title: id === 1 ? '抖音短视频带货推广' : '直播带货活动',
+    price: id === 1 ? 1500 : 3000,
+    status: 1,
+    category: id === 1 ? '短视频带货' : '直播带货',
+    merchant_id: 2,
+    merchant_name: '测试商家',
+    merchant_avatar: 'https://via.placeholder.com/100',
+    merchant_rating: 4.8,
+    followers_required: id === 1 ? 5000 : 10000,
+    created_at: id === 1 ? '2023-04-01 10:00:00' : '2023-04-02 14:30:00',
+    expire_at: id === 1 ? '2023-05-01 10:00:00' : '2023-05-02 14:30:00',
+    apply_count: id === 1 ? 8 : 5,
+    max_apply: id === 1 ? 15 : 10,
+    task_type: id === 1 ? '短视频' : '直播',
+    description: id === 1 
+      ? '需要推广我们的新款手机壳产品，要求拍摄1-2分钟短视频，展示产品特点和使用场景。要求画面清晰，讲解生动有趣，突出产品的实用性和美观性。期望能够吸引18-35岁的年轻用户。' 
+      : '化妆品直播带货，需要在直播中展示和讲解产品功效，直播时长不少于2小时，要求对化妆品有一定了解，能够专业地讲解产品成分和使用方法。目标受众为25-40岁的女性用户。',
+    requirements: id === 1
+      ? ['粉丝数5000以上', '视频时长1-2分钟', '7天内完成', '提供作品预览']
+      : ['粉丝数10000以上', '直播时长2小时以上', '需展示5款产品', '直播前需培训'],
+    product_info: {
+      name: id === 1 ? '新款时尚手机壳' : '高保湿精华液',
+      image: 'https://via.placeholder.com/300',
+      description: id === 1 
+        ? '时尚美观，防摔耐用，多款颜色可选' 
+        : '深层保湿，修复肌肤屏障，改善干燥问题'
+    },
+    materials: [
+      {
+        id: 101,
+        name: '产品详情图',
+        type: 'image',
+        url: 'https://via.placeholder.com/800x600',
+        size: '2MB'
+      },
+      {
+        id: 102,
+        name: '产品介绍文案',
+        type: 'document',
+        url: '#',
+        size: '0.5MB'
+      }
+    ]
+  };
+  
+  return [200, {
+    code: 200,
+    message: '获取成功',
+    data: taskDetail
+  }];
+});
+
+// 获取商品列表
+mock.onGet('/api/products').reply(200, {
+  code: 200,
+  message: '获取成功',
+  data: {
+    data: products.slice(0, 20),
+    total: products.length,
+    page: 1,
+    per_page: 20
+  }
+});
+
+// 获取商品详情
+mock.onGet(/\/api\/products\/\d+/).reply((config) => {
+  const id = parseInt(config.url.split('/').pop());
+  
+  // 查找产品
+  const product = products.find(p => p.id === id);
+  
+  if (product) {
+    return [200, {
+      code: 200,
+      message: '获取成功',
+      data: product
+    }];
+  } else {
+    return [404, {
+      code: 404,
+      message: '商品不存在',
+      data: null
+    }];
   }
 });
 

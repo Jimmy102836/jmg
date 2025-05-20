@@ -1,6 +1,6 @@
 {
     "name": "douyintz/backend",
-    "description": "抖音团长平台后端",
+    "description": "吉米哥达人任务平台后端",
     "type": "project",
     "require": {
         "php": "^8.0",

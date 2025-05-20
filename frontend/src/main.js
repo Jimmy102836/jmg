@@ -29,13 +29,12 @@ axios.interceptors.response.use(
 
 const app = createApp(App)
 
-// 如果启用了模拟API，则导入模拟数据
-if (window.enableMockApi) {
-  console.log('已启用API模拟功能')
-  import('./mock/api-mock').then(() => {
-    console.log('API模拟加载完成')
-  })
-}
+// 启用模拟API
+window.enableMockApi = true
+console.log('已启用API模拟功能')
+import('./mock/api-mock').then(() => {
+  console.log('API模拟加载完成')
+})
 
 // 初始化应用
 app.use(store)

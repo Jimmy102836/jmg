@@ -3,7 +3,7 @@
     <div class="container">
       <div class="section-header">
         <h2 class="section-title">平台特点</h2>
-        <p class="section-desc">抖音团长平台为您提供全方位的短视频营销服务</p>
+        <p class="section-desc">吉米哥达人任务平台为您提供全方位的短视频营销服务</p>
       </div>
       <div class="features-grid">
         <div class="feature-item" v-for="(feature, index) in features" :key="index">
@@ -25,7 +25,7 @@ export default {
     const features = [
       {
         title: '优质达人资源',
-        description: '平台汇集大量优质抖音达人，涵盖各行各业，满足不同推广需求',
+        description: '平台汇集大量优质内容达人，涵盖各行各业，满足不同推广需求',
         icon: 'el-icon-user'
       },
       {
