@@ -11,6 +11,7 @@ const MaterialManagement = () => import('../views/merchant/MaterialManagement.vu
 const TaskList = () => import('../views/TaskList.vue')
 const TaskDetail = () => import('../views/TaskDetail.vue')
 const Forbidden = () => import('../views/Forbidden.vue')
+const Leaderboard = () => import('../views/Leaderboard.vue')
 
 // 管理员路由
 const AdminLayout = () => import('../components/admin/AdminLayout.vue')
@@ -38,7 +39,7 @@ const routes = [
     path: '/',
     name: 'Home',
     component: Home,
-    meta: { title: '抖音团长平台 - 首页' }
+    meta: { title: '吉米哥达人任务平台 - 首页' }
   },
   {
     path: '/login',
@@ -81,6 +82,12 @@ const routes = [
     name: 'MerchantMaterials',
     component: MaterialManagement,
     meta: { title: '素材管理', requiresAuth: true, role: 'merchant' }
+  },
+  {
+    path: '/leaderboard',
+    name: 'Leaderboard',
+    component: Leaderboard,
+    meta: { title: '排行榜' }
   },
   {
     path: '/403',
@@ -129,7 +136,20 @@ const routes = [
         meta: { title: '系统设置', requiresAuth: true, role: 'admin' }
       }
     ]
-  }
+  },
+  // 添加商品相关路由
+  {
+    path: '/products',
+    name: 'Products',
+    component: () => import('@/views/Products.vue'),
+    meta: { requiresAuth: false, title: '商品列表' }
+  },
+  {
+    path: '/products/:id',
+    name: 'ProductDetail',
+    component: () => import('@/views/ProductDetail.vue'),
+    meta: { requiresAuth: false, title: '商品详情' }
+  },
 ]
 
 const router = createRouter({
@@ -140,7 +160,7 @@ const router = createRouter({
 // 全局前置守卫
 router.beforeEach((to, from, next) => {
   // 设置页面标题
-  document.title = to.meta.title || '抖音团长平台'
+  document.title = to.meta.title || '吉米哥达人任务平台'
   
   // 检查用户是否需要登录
   const requiresAuth = to.matched.some(record => record.meta.requiresAuth)

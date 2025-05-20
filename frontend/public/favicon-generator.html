@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Favicon Generator</title>
+</head>
+<body>
+  <h1>Favicon Generator</h1>
+  <canvas id="canvas" width="32" height="32" style="border:1px solid #000; margin: 20px 0;"></canvas>
+  <div id="result"></div>
+  
+  <script>
+    // 创建favicon
+    function generateFavicon() {
+      const canvas = document.getElementById('canvas');
+      const ctx = canvas.getContext('2d');
+      const img = new Image();
+      
+      img.onload = function() {
+        // 清除画布
+        ctx.clearRect(0, 0, canvas.width, canvas.height);
+        
+        // 绘制图像，保持纵横比
+        ctx.drawImage(img, 0, 0, canvas.width, canvas.height);
+        
+        // 将canvas转换为ico格式的base64数据
+        const dataUrl = canvas.toDataURL('image/png');
+        
+        // 显示结果
+        const resultDiv = document.getElementById('result');
+        resultDiv.innerHTML = `
+          <p>生成的favicon:</p>
+          <img src="${dataUrl}" alt="Favicon预览">
+          <p>请右击图标选择"图片另存为..."，保存为frontend/public/favicon.ico</p>
+          <p>或使用以下链接下载:</p>
+          <a href="${dataUrl}" download="favicon.ico">下载favicon.ico</a>
+        `;
+      };
+      
+      // 加载logo.jpg
+      img.src = '../src/assets/images/logo/logo.jpg';
+    }
+    
+    // 页面加载完成后执行
+    window.onload = generateFavicon;
+  </script>
+</body>
+</html> 
